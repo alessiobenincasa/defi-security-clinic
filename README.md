@@ -1,20 +1,23 @@
 # DeFi Security Clinic
 
-Analyses approfondies de vulnérabilités DeFi et solutions de sécurisation pour smart contracts.
+In-depth analysis of DeFi vulnerabilities and security solutions for smart contracts.
 
-## Vulnérabilités documentées
+## Documented Vulnerabilities
 
-- [Unstoppable](./unstoppable/) - Vulnérabilité d'incohérence d'état entraînant un déni de service
+- [Unstoppable](./unstoppable/) - State inconsistency vulnerability leading to denial of service
+- [Naive Receiver](./naive-receiver/) - Unprotected flash loan receiver leading to drainage through fees
+- [Truster](./truster/) - Arbitrary call execution vulnerability enabling token theft
+- [Side Entrance](./side-entrance/) - Flash loan deposit/withdrawal inconsistency allowing pool drainage
 
-## Méthodologie
+## Methodology
 
-Mon approche d'analyse:
-1. Analyse statique du code
-2. Identification des invariants critiques
-3. Test d'hypothèses d'exploitation
-4. Documentation des vecteurs d'attaque
-5. Recommandations de sécurisation
+My analysis approach:
+1. Static code analysis
+2. Critical invariant identification
+3. Exploitation hypothesis testing
+4. Attack vector documentation
+5. Security recommendations
 
 ## Contact
 
-Disponible pour audits et consultations: alessiobenincasa@hotmail.fr
+Available for audits and consultations: alessiobenincasa@hotmail.fr

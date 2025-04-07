@@ -1,14 +1,15 @@
-# Vulnérabilité Unstoppable
+# Unstoppable Vulnerability
 
-## Résumé
-Vulnérabilité DoS critique dans un protocole de prêt flash, permettant à un attaquant de paralyser définitivement le service avec une transaction simple et peu coûteuse.
+## Summary
+Critical DoS vulnerability in a flash loan protocol, allowing an attacker to permanently disable the service with a simple, low-cost transaction.
 
 ## Impact
-- Sévérité: Élevée
-- Complexité d'exploitation: Faible
-- Impact financier: Perte d'usage du protocole entier
+- Severity: High
+- Exploitation complexity: Low
+- Financial impact: Loss of use of the entire protocol
 
-## Contenu
-- [Analyse détaillée](./vulnerability.md)
-- [Code d'exploitation](./exploit.js)
-- [Mesures préventives](./prevention.md)
+## Contents
+- [Detailed Analysis](./vulnerability.md)
+- [Exploit Code](./exploit.js)
+- [Preventive Measures](./prevention.md)
+- [Attack Flow Diagram](./diagrams/unstoppable-flow.png)

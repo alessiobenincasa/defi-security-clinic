@@ -1,14 +1,15 @@
-# Vulnérabilité Naive Receiver
+# Naive Receiver Vulnerability
 
-## Résumé
-Exploitation d'un contrat FlashLoanReceiver vulnérable qui n'impose pas de restrictions sur qui peut initier un prêt flash, permettant de vider le contrat via des frais fixes excessifs.
+## Summary
+Exploitation of a vulnerable FlashLoanReceiver contract that does not impose restrictions on who can initiate a flash loan, allowing the contract to be drained through excessive fixed fees.
 
 ## Impact
-- Sévérité: Élevée
-- Complexité d'exploitation: Faible
-- Impact financier: Perte totale des fonds du contrat receveur
+- Severity: High
+- Exploitation complexity: Low
+- Financial impact: Total loss of receiver contract funds
 
-## Contenu
-- [Analyse détaillée](./vulnerability.md)
-- [Code d'exploitation](./exploit.js)
-- [Mesures préventives](./prevention.md)
+## Contents
+- [Detailed Analysis](./vulnerability.md)
+- [Exploit Code](./exploit.js)
+- [Preventive Measures](./prevention.md)
+- [Attack Flow Diagram](./diagrams/naive-receiver.png)

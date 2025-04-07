@@ -1,31 +1,31 @@
-# Analyse de la vulnérabilité - Truster
+# Vulnerability Analysis - Truster
 
-## Contexte
-Le contrat TrusterLenderPool permet d'emprunter des tokens via un prêt flash (flashloan), et durant ce prêt, il peut également exécuter un appel arbitraire à une adresse cible avec des données spécifiées par l'appelant.
+## Context
+The TrusterLenderPool contract allows borrowing tokens via a flash loan, and during this loan, it can also execute an arbitrary call to a target address with data specified by the caller.
 
-## Vecteur d'attaque
-La fonction `flashLoan` du pool permet à l'appelant de spécifier:
-1. Une adresse cible (`target`)
-2. Des données d'appel arbitraires (`data`)
+## Attack Vector
+The `flashLoan` function of the pool allows the caller to specify:
+1. A target address (`target`)
+2. Arbitrary call data (`data`)
 
-Le problème est que le contrat exécute cet appel arbitraire au nom du pool lui-même:
+The problem is that the contract executes this arbitrary call on behalf of the pool itself:
 ```solidity
 target.functionCall(data);
 ```
 
-Cela permet à un attaquant de faire exécuter n'importe quel appel par le pool, y compris:
-- Approuver l'attaquant à dépenser les tokens du pool
-- Modifier des paramètres critiques
-- Exécuter des fonctions réservées au pool
+This allows an attacker to have the pool execute any call, including:
+- Approving the attacker to spend the pool's tokens
+- Modifying critical parameters
+- Executing functions reserved for the pool
 
-## Détails techniques
-1. L'attaquant encode un appel à la fonction `approve(attacker, TOKENS_IN_POOL)` du token
-2. Il appelle `flashLoan` avec:
-   - Montant emprunté = 0 (pas besoin d'emprunter réellement)
-   - Target = adresse du token
-   - Data = appel encodé à approve()
-3. Le pool exécute involontairement l'approbation, donnant à l'attaquant le droit de dépenser ses tokens
-4. L'attaquant utilise ensuite `transferFrom` pour prendre tous les tokens du pool
+## Technical Details
+1. The attacker encodes a call to the token's `approve(attacker, TOKENS_IN_POOL)` function
+2. They call `flashLoan` with:
+   - Borrowed amount = 0 (no need to actually borrow)
+   - Target = token address
+   - Data = encoded call to approve()
+3. The pool unwittingly executes the approval, giving the attacker the right to spend its tokens
+4. The attacker then uses `transferFrom` to take all tokens from the pool
 
-## Diagramme du flux d'attaque
-[Voir diagramme](./diagrams/truster-flow.png)
+## Attack Flow Diagram
+[See diagram](./diagram/truster-flow.png)
